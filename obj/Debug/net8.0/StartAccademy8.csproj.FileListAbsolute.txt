@@ -1,0 +1,15 @@
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\bin\Debug\net8.0\StartAccademy8.exe
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\bin\Debug\net8.0\StartAccademy8.deps.json
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\bin\Debug\net8.0\StartAccademy8.runtimeconfig.json
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\bin\Debug\net8.0\StartAccademy8.dll
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\bin\Debug\net8.0\StartAccademy8.pdb
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.AssemblyInfoInputs.cache
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.AssemblyInfo.cs
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.csproj.CoreCompileInputs.cache
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.dll
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\refint\StartAccademy8.dll
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.pdb
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.genruntimeconfig.cache
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\ref\StartAccademy8.dll
+C:\Users\Betacom\Desktop\Betacom_Accademy\Backend\StartAccademy8\obj\Debug\net8.0\StartAccademy8.sourcelink.json
