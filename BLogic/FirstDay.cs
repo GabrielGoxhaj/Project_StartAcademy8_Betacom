@@ -67,9 +67,8 @@ namespace StartAccademy8.BLogic
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(rowSeparator);
                 Console.WriteLine("Semplice moltiplicatore di 2 numeri");
-
                 Console.ForegroundColor = ConsoleColor.White;
-                
+
                 Console.Write("Inserire Numero 1: ");
                 if (!int.TryParse(Console.ReadLine(), out n1))
                 {
