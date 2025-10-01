@@ -1,0 +1,23 @@
+# Compilazione
+bin/
+obj/
+
+# Configurazioni locali di Visual Studio
+.vs/
+.vscode/
+
+# Cache e temporanei
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Backup e log
+*.log
+*.tlog
+
+# Pacchetti NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
