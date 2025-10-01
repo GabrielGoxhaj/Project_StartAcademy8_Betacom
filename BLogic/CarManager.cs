@@ -12,7 +12,7 @@ namespace StartAccademy8.BLogic
         {
             Console.Clear();
             Console.WriteLine(
-                $"Id: {NewCar.Id} - Modello: {NewCar.Model} - Motore: {NewCar.Engine} - Potenza: {NewCar.Power}");
+                $"Id: {NewCar.Enrollment} - Modello: {NewCar.Model} - Motore: {NewCar.Engine} - Potenza: {NewCar.Power}");
         }
 
         internal bool LoadCar(Car NewCar)
@@ -34,9 +34,19 @@ namespace StartAccademy8.BLogic
 
         internal void PrintCars()
         {
+            string rowSeparator = new string('-', 100);
             foreach (Car NewCar in cars)
             {
-                Console.WriteLine($"Id: {NewCar.Id} - Modello: {NewCar.Model} - Motore: {NewCar.Engine} - Potenza: {NewCar.Power}");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(rowSeparator);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine($"Id: {NewCar.Enrollment} - Modello: {NewCar.Model} - Motore: {NewCar.Engine} - Potenza: {NewCar.Power}");
+                foreach (CarOptionals optionals in NewCar.Optionals)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Nome: {optionals.Name} - Descrizione: {optionals.Description} - Quantità: {optionals.Quantity}");
+                }
             }
         }
 
@@ -45,6 +55,28 @@ namespace StartAccademy8.BLogic
         internal void UpdateCar(Car updatedCar)
         {
             // TO DO
+        }
+
+        internal void FindCar(string enrollment)
+        {
+            string rowSeparator = new string('-', 100);
+            Car? car = cars.Find(c => c.Enrollment == enrollment);
+            List<Car> car2 = cars.FindAll(c => c.Model == "BMW" && c.Power >= 2000);
+            
+            if (car != null)
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(rowSeparator);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine($"Id: {car.Enrollment} - Modello: {car.Model} - Motore: {car.Engine} - Potenza: {car.Power}");
+                foreach (CarOptionals optionals in car.Optionals)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Nome: {optionals.Name} - Descrizione: {optionals.Description} - Quantità: {optionals.Quantity}");
+                }
+            }
+            else { Console.Write($"L'auto con matricola: {enrollment} non è presente"); }
         }
     }
 }
