@@ -8,13 +8,31 @@ namespace StartAccademy8.DataModels
 {
     public class MainEnumerators
     {
-    public enum CarModel
+        public enum CarModel
         {
             None,
             BMW,
             Porsche,
             SAAB,
             Lamborghini,
+        }
+
+        public enum EngineType
+        {
+            None,
+            Gasoline,
+            Hydrogen,
+            Diesel,
+            FullHybrid
+        }
+
+        public enum MenuItems
+        {
+            None,
+            LoadCar = 1,
+            FindCar,
+            DeleteCar,
+            ExitProgram = 9
         }
     }
 }

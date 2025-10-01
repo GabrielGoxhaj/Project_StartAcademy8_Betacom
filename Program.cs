@@ -11,8 +11,31 @@ namespace StartAccademy8
 
         static void Main(string[] args)
         {
+            MenuManager.MainMenu();
+            return;
+
             //int CarModel = (int)MainEnumerators.CarModel.SAAB;
+
+            int myCar = 2;
+
             MainEnumerators.CarModel carModel = MainEnumerators.CarModel.BMW;
+            Car carEnum = new()
+            {
+                Enrollment = "stnmrtn69",
+                Model = "Aston Martin",
+                Engine = "Gasoline",
+                ModelEnum = MainEnumerators.CarModel.None,
+                Power = 3000
+            };
+
+            Console.WriteLine(carEnum.ToString());
+            Console.WriteLine(
+                $"Model ENUM: {carEnum.ModelEnum}\n" +
+                $"Valore Enum Model: {(int)carEnum.ModelEnum}\n" +
+                $"La mia auto: {(MainEnumerators.CarModel)myCar}"
+                );
+
+            return;
 
             int[] myNumbers = new int[10];
             List<int> list = new List<int>();
@@ -26,8 +49,8 @@ namespace StartAccademy8
             DateTime Today = DateTime.Now;
             DateTime Yesterday = new DateTime(2025, 09, 30);
 
-            Console.WriteLine($"Tra ieri e ora sono passati: {(int)(Today - Yesterday).TotalMinutes}");
-            return;
+            //Console.WriteLine($"Tra ieri e ora sono passati: {(int)(Today - Yesterday).TotalMinutes}");
+            //return;
 
             //CarManager carManager = new(); // Costruttore vuoto
             //CarManager carManager2 = new(car);
@@ -60,24 +83,24 @@ namespace StartAccademy8
                 car2.Power = 550;
             }
 
-            //var contextValidation = new ValidationContext(car, null, null);
-            //var validationResults = new List<ValidationResult>();
+            var contextValidation = new ValidationContext(car, null, null);
+            var validationResults = new List<ValidationResult>();
 
-            //bool isValid = Validator.TryValidateObject(car, contextValidation, validationResults, true);
-            //if (isValid)
-            //{
-            //    carManager3.LoadCar(car);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("ATTENZIONE: Dati errati in uno o più modelli auto");
-            //    foreach (var validationResult in validationResults)
-            //    {
-            //        Console.WriteLine(validationResult.ErrorMessage);
-            //    }
+            bool isValid = Validator.TryValidateObject(car, contextValidation, validationResults, true);
+            if (isValid)
+            {
+                carManager3.LoadCar(car);
+            }
+            else
+            {
+                Console.WriteLine("ATTENZIONE: Dati errati in uno o più modelli auto");
+                foreach (var validationResult in validationResults)
+                {
+                    Console.WriteLine(validationResult.ErrorMessage);
+                }
 
-            //    return;
-            //}
+                return;
+            }
 
             carManager3.LoadCar(car);
             carManager3.LoadCar(car2);
