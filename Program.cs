@@ -11,8 +11,8 @@ namespace StartAccademy8
 
         static void Main(string[] args)
         {
-            MenuManager.MainMenu();
-            return;
+            //MenuManager.MainMenu();
+            //return;
 
             //int CarModel = (int)MainEnumerators.CarModel.SAAB;
 
@@ -27,6 +27,14 @@ namespace StartAccademy8
                 ModelEnum = MainEnumerators.CarModel.None,
                 Power = 3000
             };
+
+            List<Car> fileTxtCars = [];
+            fileTxtCars.Add(carEnum);
+            fileTxtCars.Add(carEnum);
+            fileTxtCars.Add(carEnum);
+
+            FileManager.WriteCarsFile(fileTxtCars);
+            return;
 
             Console.WriteLine(carEnum.ToString());
             Console.WriteLine(
