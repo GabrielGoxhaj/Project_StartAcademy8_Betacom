@@ -11,6 +11,11 @@ namespace StartAccademy8
 
         static void Main(string[] args)
         {
+            List<Car> cars = [];
+            FileManager.ReadCarsJson(ref cars);
+            //cars = FileManager.ReadCarsFile();
+
+
             //MenuManager.MainMenu();
             //return;
 
@@ -25,8 +30,14 @@ namespace StartAccademy8
                 Model = "Aston Martin",
                 Engine = "Gasoline",
                 ModelEnum = MainEnumerators.CarModel.None,
-                Power = 3000
+                Power = 3000,
             };
+
+            CarOptionals carOptionals1 = new();
+            carOptionals1.Id = 1;
+            carOptionals1.CarEnrollment = "stnmrtn69";
+            carOptionals1.Description = "Running";
+            carOptionals1.Quantity = 3;
 
             List<Car> fileTxtCars = [];
             fileTxtCars.Add(carEnum);
@@ -34,6 +45,8 @@ namespace StartAccademy8
             fileTxtCars.Add(carEnum);
 
             FileManager.WriteCarsFile(fileTxtCars);
+            FileManager.WriteCarsJson(fileTxtCars);
+            FileManager.WriteCarsXml(fileTxtCars);
             return;
 
             Console.WriteLine(carEnum.ToString());
@@ -44,7 +57,7 @@ namespace StartAccademy8
                 );
 
             return;
-
+            
             int[] myNumbers = new int[10];
             List<int> list = new List<int>();
 

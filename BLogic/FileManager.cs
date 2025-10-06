@@ -1,9 +1,12 @@
 ﻿using StartAccademy8.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace StartAccademy8.BLogic
 {
@@ -28,17 +31,19 @@ namespace StartAccademy8.BLogic
             foreach (Car car in cars)
                 strCarsFile.AppendLine($"{car.Enrollment};{car.Model};{car.Engine};{car.Power}");
 
-            File.WriteAllText(Path.Combine(filePath, fileName), strCarsFile.ToString());
+            File.AppendAllText(Path.Combine(ConfigurationManager.AppSettings["DataFilePath"],ConfigurationManager.AppSettings["TxtFileName"]), strCarsFile.ToString());
         }
 
         public static List<Car> ReadCarsFile()
         {
             List<Car> list = [];
 
-            string fileName2 = "CarsListSB.txt";
+            string fileName = "CarsListSB.txt";
             string filePath = "C:\\Temp";
 
-            string[] carsTxt = File.ReadAllLines(Path.Combine(filePath, fileName2));
+            string[] carsTxt = File.ReadAllLines(Path.Combine(filePath, fileName));
+
+            //string[] carProps = new string[];
 
             foreach (string car in carsTxt)
             {
@@ -54,5 +59,54 @@ namespace StartAccademy8.BLogic
 
             return list;
         }
+
+        public static void WriteCarsJson(List<Car> cars)
+        {
+            string fileName = "CarsListSB.json";
+            string filePath = "C:\\Temp";
+
+            string saveCarsJson = string.Empty;
+
+            saveCarsJson = JsonSerializer.Serialize(
+                cars, new JsonSerializerOptions { WriteIndented = true }
+                );
+
+            File.WriteAllText(Path.Combine(filePath, fileName), saveCarsJson);
+        }
+
+        public static void ReadCarsJson(ref List<Car> cars)
+        {
+            string fileName = "CarsListSB.json";
+            string filePath = "C:\\Temp";
+            string CarsJson = File.ReadAllText(Path.Combine(filePath, fileName));
+            cars = JsonSerializer.Deserialize<List<Car>>(CarsJson);
+        }
+
+        public static void WriteCarsXml(List<Car> cars)
+        {
+            string fileName = "CarsListSB.xml";
+            string filePath = "C:\\Temp";
+            
+            XmlSerializer xmlSerialize = new XmlSerializer(typeof(List<Car>));
+            StreamWriter stream = new(Path.Combine(filePath, fileName));
+            xmlSerialize.Serialize(stream, cars);
+            stream.Close();
+        }
+
+        ////public static void ReadCarsXml()
+        //{
+        //    List<Car> cars = [];
+
+        //    string fileName = "CarsListSB.xml";
+        //    string filePath = "C:\\Temp";
+
+        //    XmlSerializer xmlSerialize = new XmlSerializer(typeof(List<Car>));
+        //    using (FileStream fileStream = new FileStream((Path.Combine(filePath, fileName), FileMode.Open){
+        //        cars = (List<Car>) xmlSerialize.Deserialize(fileStream);
+        //    }
+        //}
+
+
+
     }
-}
+    }
