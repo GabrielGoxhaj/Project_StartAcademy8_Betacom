@@ -31,7 +31,7 @@ namespace StartAccademy8.BLogic
             foreach (Car car in cars)
                 strCarsFile.AppendLine($"{car.Enrollment};{car.Model};{car.Engine};{car.Power}");
 
-            File.AppendAllText(Path.Combine(ConfigurationManager.AppSettings["DataFilePath"],ConfigurationManager.AppSettings["TxtFileName"]), strCarsFile.ToString());
+            File.AppendAllText(Path.Combine(ConfigurationManager.AppSettings["DataFilePath"], ConfigurationManager.AppSettings["TxtFileName"]), strCarsFile.ToString());
         }
 
         public static List<Car> ReadCarsFile()
@@ -86,7 +86,7 @@ namespace StartAccademy8.BLogic
         {
             string fileName = "CarsListSB.xml";
             string filePath = "C:\\Temp";
-            
+
             XmlSerializer xmlSerialize = new XmlSerializer(typeof(List<Car>));
             StreamWriter stream = new(Path.Combine(filePath, fileName));
             xmlSerialize.Serialize(stream, cars);
@@ -109,4 +109,4 @@ namespace StartAccademy8.BLogic
 
 
     }
-    }
+}
