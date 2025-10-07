@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualBasic;
 using StartAccademy8.BLogic;
-using System.Linq.Expressions;
 using StartAccademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
+using System.Linq.Expressions;
 
 namespace StartAccademy8
 {
@@ -12,16 +12,11 @@ namespace StartAccademy8
         static string LineSeparator = ConfigurationManager.AppSettings["LineSeparator"];
         static void Main(string[] args)
         {
-            RecordSamples DbConfig = new ("SQLServerOne", "AdventureWorks", "Customers");
-            RecordSamples DbConfig2 = new("SQLServerTwo", "AdventureWorks", "Customers");
+            RecordSamples DbConfig = new("SqlServerOne", "AdventureWorks", "Customers");
 
-            Console.WriteLine($"DbConfig uguale a DbConfig2: {DbConfig == DbConfig2}");
-            (string server, string db, string table) = DbConfig;
-
-            Console.WriteLine($"Server destrutturato: {server}");
-            Console.WriteLine($"Server destrutturato: {db}");
-            Console.WriteLine($"Server destrutturato: {table}");
-            Console.WriteLine(LineSeparator);
+            DictionarySamples dictionarySamples = new();
+            dictionarySamples.MyFirstDictionary();
+            return;
 
             Car car1 = new Car
             {
@@ -40,7 +35,6 @@ namespace StartAccademy8
             Console.WriteLine($"Car1 uguale a Car3: {Object.ReferenceEquals(car1, car3)}");
             return;
 
-            DictionarySamples dictionarySamples = new DictionarySamples();
             dictionarySamples.MyFirstDictionary();
             return;
 

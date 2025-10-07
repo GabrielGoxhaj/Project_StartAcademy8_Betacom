@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace StartAccademy8.BLogic
 {
-    public class RecordSamples(string server, string db, string table)
+    public record RecordSamples(string server, string db, string table)
     {
         public string Server => server;
         public string DB => db;
         public string Table => table;
-        public string GetDbConnectionString()
+        public string GetDbCOnnectionString()
         { return DB; }
     }
 }
