@@ -3,14 +3,47 @@ using StartAccademy8.BLogic;
 using System.Linq.Expressions;
 using StartAccademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace StartAccademy8
 {
     public class Program
     {
-
+        static string LineSeparator = ConfigurationManager.AppSettings["LineSeparator"];
         static void Main(string[] args)
         {
+            RecordSamples DbConfig = new ("SQLServerOne", "AdventureWorks", "Customers");
+            RecordSamples DbConfig2 = new("SQLServerTwo", "AdventureWorks", "Customers");
+
+            Console.WriteLine($"DbConfig uguale a DbConfig2: {DbConfig == DbConfig2}");
+            (string server, string db, string table) = DbConfig;
+
+            Console.WriteLine($"Server destrutturato: {server}");
+            Console.WriteLine($"Server destrutturato: {db}");
+            Console.WriteLine($"Server destrutturato: {table}");
+            Console.WriteLine(LineSeparator);
+
+            Car car1 = new Car
+            {
+                Enrollment = "A1",
+                Model = "Mercedes"
+            };
+
+            Car car3 = new Car
+            {
+                Enrollment = "A1",
+                Model = "Mercedes"
+            };
+
+            Console.WriteLine($"Car1 uguale a Car3: {car1 == car3}");
+            Console.WriteLine(LineSeparator);
+            Console.WriteLine($"Car1 uguale a Car3: {Object.ReferenceEquals(car1, car3)}");
+            return;
+
+            DictionarySamples dictionarySamples = new DictionarySamples();
+            dictionarySamples.MyFirstDictionary();
+            return;
+
             List<Car> cars = [];
             FileManager.ReadCarsJson(ref cars);
             //cars = FileManager.ReadCarsFile();
