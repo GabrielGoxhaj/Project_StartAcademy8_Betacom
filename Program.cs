@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using StartAcademy8.BLogic;
 using StartAccademy8.BLogic;
 using StartAccademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
@@ -12,29 +13,53 @@ namespace StartAccademy8
         static string LineSeparator = ConfigurationManager.AppSettings["LineSeparator"];
         static void Main(string[] args)
         {
-            RecordSamples DbConfig = new("SqlServerOne", "AdventureWorks", "Customers");
+            OOP.Khane khane = new("Cane", 3);
+            khane.AnimalSound();
+            khane.AnimalMovement();
 
-            DictionarySamples dictionarySamples = new();
-            dictionarySamples.MyFirstDictionary();
+            OOP.Gallina gallina = new("Giggia", 5);
+            gallina.AnimalSound(); gallina.AnimalMovement(); gallina.AnimalLand();
             return;
 
-            Car car1 = new Car
+            RecordSamples DbConfig = new("SqlServerOne", "AdventureWorks", "Customers");
+            RecordSamples DbConfig2 = new("SqlServerTwo", "AdventureWorks", "Customers");
+
+            Console.WriteLine($"DbCOnfig uguale a DbConfig2: {DbConfig == DbConfig2}");
+            (string server, string db, string tbl) = DbConfig;
+
+            Console.WriteLine($"Server destrutturato: {server}");
+            Console.WriteLine($"Server destrutturato: {db}");
+            Console.WriteLine($"Server destrutturato: {tbl}");
+
+            Console.WriteLine(LineSeparator);
+
+            Car car1 = new()
             {
                 Enrollment = "A1",
                 Model = "Mercedes"
             };
 
-            Car car3 = new Car
+            Car car3 = new()
             {
-                Enrollment = "A1",
+                Enrollment = "A12",
                 Model = "Mercedes"
             };
+
+
+            // lavora per riferimento
+            Car car4 = car1;
 
             Console.WriteLine($"Car1 uguale a Car3: {car1 == car3}");
             Console.WriteLine(LineSeparator);
             Console.WriteLine($"Car1 uguale a Car3: {Object.ReferenceEquals(car1, car3)}");
-            return;
+            Console.WriteLine(LineSeparator);
+            Console.WriteLine($"Car1 uguale a Car4 (Attenzione: BY REFERENCE: {Object.ReferenceEquals(car1, car4)}");
+            Console.WriteLine(LineSeparator);
+            Console.WriteLine($"Uguaglianza classi car1 e car3, con override su equals: {car1.Equals(car3)}");
 
+
+
+            DictionarySamples dictionarySamples = new();
             dictionarySamples.MyFirstDictionary();
             return;
 
