@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StartAcademy8.BLogic;
+using StartAcademy8.DataModels;
 
-namespace StartAccademy8.DataModels
+namespace StartAcademy8.DataModels
 {
     public class Car
     {

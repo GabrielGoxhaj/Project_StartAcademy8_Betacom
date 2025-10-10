@@ -1,12 +1,11 @@
 ﻿using Microsoft.VisualBasic;
 using StartAcademy8.BLogic;
-using StartAccademy8.BLogic;
-using StartAccademy8.DataModels;
+using StartAcademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq.Expressions;
 
-namespace StartAccademy8
+namespace StartAcademy8
 {
     public class Program
     {

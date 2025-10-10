@@ -48,7 +48,7 @@ namespace StartAcademy8.BLogic
             {
             }
 
-            public  override void AnimalSound() => Console.WriteLine($"Name:  BAU, bAU, BAU");
+            public  override void AnimalSound() => Console.WriteLine($"{Name}:  BAU, bAU, BAU");
             public override void AnimalMovement()
             {
                 base.AnimalMovement();

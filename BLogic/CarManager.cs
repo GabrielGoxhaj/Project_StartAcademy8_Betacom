@@ -1,7 +1,7 @@
 ﻿using System;
-using StartAccademy8.DataModels;
+using StartAcademy8.DataModels;
 
-namespace StartAccademy8.BLogic
+namespace StartAcademy8.BLogic
 {
     internal class CarManager
     {

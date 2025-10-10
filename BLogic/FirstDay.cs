@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StartAccademy8.BLogic
+namespace StartAcademy8.BLogic
 {
     internal static class FirstDay
     {

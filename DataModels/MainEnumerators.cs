@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StartAccademy8.DataModels
+namespace StartAcademy8.DataModels
 {
     public class MainEnumerators
     {

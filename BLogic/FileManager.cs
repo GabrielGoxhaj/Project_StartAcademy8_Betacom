@@ -1,4 +1,4 @@
-﻿using StartAccademy8.DataModels;
+﻿using StartAcademy8.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace StartAccademy8.BLogic
+namespace StartAcademy8.BLogic
 {
     public static class FileManager
     {

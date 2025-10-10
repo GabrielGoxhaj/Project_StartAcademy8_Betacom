@@ -1,11 +1,11 @@
-﻿using StartAccademy8.DataModels;
+﻿using StartAcademy8.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StartAccademy8.BLogic
+namespace StartAcademy8.BLogic
 {
     public class TupleSamples
     {
