@@ -11,7 +11,7 @@ namespace StartAcademy8.BLogic
         public string Server => server;
         public string DB => db;
         public string Table => table;
-        public string GetDbCOnnectionString()
+        public string GetDbConnectionString()
         { return DB; }
     }
 }

@@ -93,18 +93,19 @@ namespace StartAcademy8.BLogic
             stream.Close();
         }
 
-        ////public static void ReadCarsXml()
-        //{
-        //    List<Car> cars = [];
+        public static void ReadCarsXml()
+        {
+            List<Car> cars = [];
 
-        //    string fileName = "CarsListSB.xml";
-        //    string filePath = "C:\\Temp";
+            string fileName = "CarsListSB.xml";
+            string filePath = "D:\\Temp";
 
-        //    XmlSerializer xmlSerialize = new XmlSerializer(typeof(List<Car>));
-        //    using (FileStream fileStream = new FileStream((Path.Combine(filePath, fileName), FileMode.Open){
-        //        cars = (List<Car>) xmlSerialize.Deserialize(fileStream);
-        //    }
-        //}
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Car>));
+            using (FileStream fileStream = new FileStream(Path.Combine(filePath, fileName), FileMode.Open))
+            {
+                cars = (List<Car>)xmlSerializer.Deserialize(fileStream);
+            }
+        }
 
 
 
