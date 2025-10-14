@@ -1,10 +1,16 @@
 # Compilazione
 bin/
 obj/
+StartAcademy8/bin
+StartAcademy8/obj
+CommonAcademy8/bin
+CommonAcademy8/obj
 
 # Configurazioni locali di Visual Studio
 .vs/
 .vscode/
+StartAcademy8/.vs
+CommonAcademy8/.vs
 
 # Cache e temporanei
 *.user
