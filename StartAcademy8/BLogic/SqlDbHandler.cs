@@ -1,10 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using StartAcademy8.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StartAcademy8.BLogic
 {
@@ -14,7 +9,6 @@ namespace StartAcademy8.BLogic
         private readonly SqlCommand _command = new();
         public bool IsDbOnline = false;
         List<Employee> employees = [];
-
         public SqlDbHandler(string cnnString)
         {
             try
@@ -25,19 +19,17 @@ namespace StartAcademy8.BLogic
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine($"Errore Connessione DB: {ex.Message}");
-                throw;
             }
             finally { _connection.Close(); }
         }
-
         public void GetCompleteEmployees()
         {
+
             try
             {
-                _command.CommandText = "SELECT Employee.*, Workday.*" +
-                    "From Employee INNER JOIN" +
+                _command.CommandText = "SELECT Employee.*, Workday.* " +
+                    "FROM Employee INNER JOIN " +
                     "Workday ON Employee.Enrollment = Workday.Enrollment";
                 _command.Connection = _connection;
 
@@ -45,24 +37,66 @@ namespace StartAcademy8.BLogic
                     _connection.Open();
 
                 SqlDataReader reader = _command.ExecuteReader();
-                while (reader.Read()) // read va avanti da solo finchè viene letto tutto nel reader
+
+                while (reader.Read())
                 {
+
                     Console.WriteLine($"Matricola: {reader.GetSqlString(0)}");
                     Console.WriteLine($"Nominativo: {reader["FullName"]}");
-                    Console.WriteLine("--------------------------------");
+                    Console.WriteLine("--------------------------------------------------");
+
                     employees.Add(new Employee()
                     {
                         Enrollment = reader["Enrollment"].ToString(),
                         FullName = reader["FullName"].ToString()
                     });
+
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {
+
                 throw;
             }
+            finally
+            {
+                _connection.Close();
+            }
         }
+        public void GetEmployeeByEnrollment(string enrollment)
+        {
+            try
+            {
+                _command.CommandText = "select * from Employee where Enrollment = @Enrollment";
+                _command.Parameters.AddWithValue("@Enrollment", enrollment);
 
+                _command.Connection = _connection;
+
+                if (_connection.State == System.Data.ConnectionState.Closed)
+                    _connection.Open();
+
+                SqlDataReader reader = _command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Console.WriteLine($"Matricola: {reader.GetSqlString(0)}");
+                    Console.WriteLine($"Nominativo: {reader["FullName"]}");
+                    Console.WriteLine("--------------------------------------------------");
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
         public int GetTotalEmployees()
         {
             int totalEmployees = 0;
@@ -74,40 +108,16 @@ namespace StartAcademy8.BLogic
                 if (_connection.State == System.Data.ConnectionState.Closed)
                     _connection.Open();
 
+
                 totalEmployees = Convert.ToInt16(_command.ExecuteScalar());
             }
             catch (Exception ex)
             {
+
                 throw;
             }
             finally { _connection.Close(); }
             return totalEmployees;
-        }
-
-        public void GetEmployeeById(string enrollment)
-        {
-            try
-            {
-                _command.CommandText = $"SELECT * FROM Employee WHERE Enrollment = @Enrollment";
-                _command.Parameters.AddWithValue("@Enrollment", enrollment);
-                _command.Connection = _connection;
-
-                if (_connection.State == System.Data.ConnectionState.Closed)
-                    _connection.Open();
-
-                SqlDataReader reader = _command.ExecuteReader();
-                while (reader.Read()) // read va avanti da solo finchè viene letto tutto nel reader
-                {
-                    Console.WriteLine($"Matricola: {reader.GetSqlString(0)}");
-                    Console.WriteLine($"Nominativo: {reader["FullName"]}");
-                    Console.WriteLine("--------------------------------");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally { _connection.Close(); }
         }
     }
 }
