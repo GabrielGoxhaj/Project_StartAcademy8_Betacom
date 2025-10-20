@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,22 +17,18 @@ namespace StartAcademy8.BLogic
                 get => _age;
                 set
                 {
-                    if (value <0 || value > 50)
+                    if (value < 0 || value > 50)
                         throw new ArgumentOutOfRangeException(nameof(Age));
                     _age = value;
                 }
             }
-
             public string Name { get; set; }
-
             public Animal(string name, int age)
             {
                 Name = name;
                 Age = age;
             }
-
             public abstract void AnimalSound();
-
             public virtual void AnimalMovement()
             {
                 Console.WriteLine($"{Name}, normalmente si muove.");
@@ -42,21 +39,19 @@ namespace StartAcademy8.BLogic
             void AnimalFLy();
             void AnimalLand();
         }
-        public class Khane:Animal
+        public class Khane : Animal
         {
             public Khane(string name, int age) : base(name, age)
             {
             }
-
-            public  override void AnimalSound() => Console.WriteLine($"{Name}:  BAU, bAU, BAU");
+            public override void AnimalSound() => Console.WriteLine($"Name:  BAU, bAU, BAU");
             public override void AnimalMovement()
             {
                 base.AnimalMovement();
                 Console.WriteLine("Nel caso di Fuffi, corre come un matto.");
             }
-
         }
-        public class Eagle:Animal, IMovementType 
+        public class Eagle : Animal, IMovementType
         {
             public Eagle(string name, int age) : base(name, age)
             {
@@ -66,7 +61,6 @@ namespace StartAcademy8.BLogic
             {
                 Console.Write($"{Name}, vola ad alte quote");
             }
-
             public int MyMethod()
             {
                 return 0;
@@ -86,10 +80,34 @@ namespace StartAcademy8.BLogic
         {
             public Gallina(string name, int age) : base(name, age)
             {
+                //    CommonAcademy8.Utility utility = new();
+                //    utility.FirstLibMethod();
             }
-
             public void GallinaMethod()
             { }
+        }
+        public class StrangeSingleton
+        {
+            private static int counter = 0;
+            private static StrangeSingleton strangeInstance;
+            public static string FilePathName = string.Empty;
+            private StrangeSingleton()
+            {
+                //counter++;
+                //Console.WriteLine($"Valore COntatore: {counter}");
+            }
+            public static StrangeSingleton GetStrangeSingleton()
+            {
+                if (strangeInstance == null)
+                {
+                    strangeInstance = new StrangeSingleton();
+                    // Scrivo tutto il codice che mi serve, esempio:
+                    FilePathName = ConfigurationManager.AppSettings["DataFilePath"];
+                }
+
+                return strangeInstance;
+            }
+
         }
     }
 }

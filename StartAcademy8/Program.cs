@@ -4,6 +4,7 @@ using StartAcademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq.Expressions;
+using static StartAcademy8.BLogic.OOP;
 
 namespace StartAcademy8
 {
@@ -12,7 +13,46 @@ namespace StartAcademy8
         static string LineSeparator = ConfigurationManager.AppSettings["LineSeparator"];
         static void Main(string[] args)
         {
-            OOP.Khane khane = new("Cane", 3);
+            SqlDbHandler sqlDbHandler = new(ConfigurationManager.AppSettings["SqlConnectionString"]);
+            if (sqlDbHandler.IsDbOnline)
+            {
+                sqlDbHandler.GetCompleteEmployees();
+                Console.WriteLine($"Totale Impiegati: {sqlDbHandler.GetTotalEmployees()}");
+                sqlDbHandler.GetEmployeeByEnrollment("P001");
+            }
+            else
+            {
+                Console.WriteLine("DB OFFLINE, CHIUSURA ANTICIPATA PROGRAMMA.");
+            }
+
+            return;
+
+            //testLibrarySolution.GetMessage();
+
+            //utility.FirstLibMethod();
+
+            //List<CommonAcademy8.Models.Car> car5 = [];
+
+            //Console.WriteLine("UTILIZZO ESTENSIONE METODO SU CLASSE WORKDAY");
+            //WorkDay workDay = new WorkDay();
+            //workDay.WeekFrequency();
+            //ExtraActivityInfo.TrasformaInMaiuscolo("claudio");
+            //string s1 = "orloff";
+            //Console.WriteLine(s1.TrasformaInMaiuscolo());
+            //Console.WriteLine("UTILIZZO PATTERN SINGLETON");
+            //StrangeSingleton strangeSingleton = StrangeSingleton.GetStrangeSingleton();
+            //Console.WriteLine($"Valore FIlePath: {StrangeSingleton.FilePathName}");
+            //StrangeSingleton strangeSingleton2 = StrangeSingleton.GetStrangeSingleton();
+
+            Console.WriteLine("Test OOP2 (Veicoli)");
+            OOP2.Auto auto = new(120);
+            auto.Move(100);
+            auto.Accelerate(20);
+            OOP2.Airplane airplane = new(800);
+            airplane.Move(500);
+            airplane.Fly(3000);
+
+            return; P.Khane khane = new("Cane", 3);
             khane.AnimalSound();
             khane.AnimalMovement();
 
