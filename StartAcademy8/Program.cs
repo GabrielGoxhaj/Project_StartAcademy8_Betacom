@@ -52,7 +52,8 @@ namespace StartAcademy8
             airplane.Move(500);
             airplane.Fly(3000);
 
-            return; P.Khane khane = new("Cane", 3);
+            return;
+            Khane khane = new("Cane", 3);
             khane.AnimalSound();
             khane.AnimalMovement();
 
