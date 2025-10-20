@@ -84,7 +84,6 @@ namespace StartAcademy8
                 Model = "Mercedes"
             };
 
-
             // lavora per riferimento
             Car car4 = car1;
 
@@ -96,8 +95,6 @@ namespace StartAcademy8
             Console.WriteLine(LineSeparator);
             Console.WriteLine($"Uguaglianza classi car1 e car3, con override su equals: {car1.Equals(car3)}");
 
-
-
             DictionarySamples dictionarySamples = new();
             dictionarySamples.MyFirstDictionary();
             return;
@@ -105,7 +102,6 @@ namespace StartAcademy8
             List<Car> cars = [];
             FileManager.ReadCarsJson(ref cars);
             //cars = FileManager.ReadCarsFile();
-
 
             //MenuManager.MainMenu();
             //return;
