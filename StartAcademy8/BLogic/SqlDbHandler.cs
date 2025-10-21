@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using StartAcademy8.DataModels;
+using System.Data;
 
 namespace StartAcademy8.BLogic
 {
@@ -64,11 +65,76 @@ namespace StartAcademy8.BLogic
                 _connection.Close();
             }
         }
+
+        public string GetEmployeeDepartByEnrollment(string enrollment)
+        {
+            string dpt = string.Empty;
+            try
+            {
+                using(SqlConnection connection = _connection)
+                {
+                    connection.Open();
+                    _command.CommandText = "exec spGetEmployeeDepartment";
+                    _command.Connection = connection;
+                    _command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    _command.Parameters.AddWithValue("@Enrollment", enrollment);
+
+                    _command.Parameters.Add(
+                        new SqlParameter("@Department", System.Data.SqlDbType.VarChar, 50).Direction = 
+                        System.Data.ParameterDirection.Output);
+
+                    _command.ExecuteNonQuery();
+                    dpt = _command.Parameters["@Department"].Value.ToString();
+                }
+                Console.WriteLine($"Reparto del dipendente con matricola {enrollment}: {dpt}");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dpt;
+        }
+
+        public bool spInsertEmployee(Employee employee)
+        {
+            bool rsult = false;
+            int spValue = 0;
+            try
+            {
+                using (SqlConnection connection = _connection)
+                {
+                    connection.Open();
+
+                    _command.CommandText = "spInsertPartialEmployee";
+                    _command.Connection = connection;
+                    _command.CommandType = CommandType.StoredProcedure;
+
+                    _command.Parameters.AddWithValue("@Enrollment", employee.Enrollment);
+                    _command.Parameters.AddWithValue("@FullName", employee.FullName);
+                    _command.Parameters.AddWithValue("@Role", employee.Role);
+                    _command.Parameters.AddWithValue("@Department", employee.Department);
+                    _command.Parameters.AddWithValue("@Age", employee.Age);
+
+                    spValue = Convert.ToInt16(_command.ExecuteScalar());
+                }
+
+                rsult = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ATTENZIONE! Errore imprevisto: {ex.Message}");
+            }
+
+            return rsult;
+        }
+
         public void GetEmployeeByEnrollment(string enrollment)
         {
             try
             {
-                _command.CommandText = "select * from Employee where Enrollment = @Enrollment";
+                _command.CommandText = "SELECT * FROM Employee WHERE Enrollment = @Enrollment";
                 _command.Parameters.AddWithValue("@Enrollment", enrollment);
 
                 _command.Connection = _connection;
