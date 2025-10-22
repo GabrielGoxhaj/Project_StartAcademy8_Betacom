@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StartAcademy8.DataModels
+namespace DbHandler.DataModels
 {
     public  class WorkDay
     {

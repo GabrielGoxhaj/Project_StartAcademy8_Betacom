@@ -22,7 +22,7 @@ namespace CommonAcademy8.DataModels
 
         [Range(500, 9000, ErrorMessage = "La cilindrata deve essere compresa tra 500 e 9000 cc")]
         public int Power { get; set; }
-        //public MainEnumerators.CarModel ModelEnum { get; set; }
+        public MainEnumerators.CarModel ModelEnum { get; set; }
         public List<CarOptionals> Optionals { get; set; } = [];
     }
 }

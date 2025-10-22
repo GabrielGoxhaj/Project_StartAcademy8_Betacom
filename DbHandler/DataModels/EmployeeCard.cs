@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DbHandler.DataModels;
 
-namespace StartAcademy8.DataModels
+
+namespace DbHandler.DataModels
 {
     public class EmployeeCard
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using StartAcademy8.DataModels;
+using CommonAcademy8.DataModels;
 
 namespace StartAcademy8.BLogic
 {

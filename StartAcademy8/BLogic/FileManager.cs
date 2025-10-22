@@ -1,5 +1,4 @@
-﻿using StartAcademy8.DataModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -7,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using CommonAcademy8.DataModels;
 
 namespace StartAcademy8.BLogic
 {

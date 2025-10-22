@@ -1,11 +1,9 @@
 ﻿using Microsoft.VisualBasic;
 using StartAcademy8.BLogic;
-using StartAcademy8.DataModels;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq.Expressions;
 using static StartAcademy8.BLogic.OOP;
-using DbHandler.DataModels;
 using DbHandler;
 using CommonAcademy8.DataModels;
 
