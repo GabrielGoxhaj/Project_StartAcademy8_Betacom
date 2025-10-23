@@ -29,9 +29,10 @@ namespace DbHandler
 
             try
             {
-                _command.CommandText = "SELECT Employee.*, Workday.* " +
-                    "FROM Employee INNER JOIN " +
-                    "Workday ON Employee.Enrollment = Workday.Enrollment";
+                _command.CommandText = @"
+                SELECT DISTINCT Employee.Enrollment, Employee.FullName
+                FROM Employee
+                INNER JOIN Workday ON Employee.Enrollment = Workday.Enrollment";
                 _command.Connection = _connection;
 
                 if (_connection.State == System.Data.ConnectionState.Closed)
