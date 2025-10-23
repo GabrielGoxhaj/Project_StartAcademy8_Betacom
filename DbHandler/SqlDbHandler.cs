@@ -24,7 +24,7 @@ namespace DbHandler
             }
             finally { _connection.Close(); }
         }
-        public void GetCompleteEmployees()
+        public List<Employee> GetCompleteEmployees()
         {
 
             try
@@ -64,6 +64,7 @@ namespace DbHandler
             {
                 _connection.Close();
             }
+            return employees;
         }
 
         public string GetEmployeeDepartByEnrollment(string enrollment)
