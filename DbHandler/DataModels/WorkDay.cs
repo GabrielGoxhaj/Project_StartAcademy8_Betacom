@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DbHandler.DataModels
+namespace DbHandler.Models
 {
-    public  class WorkDay
+    public class WorkDay
     {
         [Key]
         public int ID { get; set; }
@@ -14,9 +14,16 @@ namespace DbHandler.DataModels
         public string? Enrollment { get; set; }
     }
 
-    public class ActivityDetail: WorkDay
-    { 
-    
-       
+
+    public static class ExtraActivityInfo
+    {
+        public static void WeekFrequency(this WorkDay workDay)
+        {
+            Console.WriteLine("SONO UN ESTENSIONE DELLA CLASSE WORKDAY (NO EREDITATO");
+        }
+
+        public static string TrasformaInMaiuscolo(this string sValue)
+        { return sValue.ToUpper(); }
     }
+
 }
