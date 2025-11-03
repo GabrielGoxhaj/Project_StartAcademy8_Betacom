@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using DbHandler.DataModels;
+using DbHandler.Models;
 
 namespace StartAcademy8.BLogic
 {

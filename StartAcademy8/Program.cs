@@ -12,8 +12,14 @@ namespace StartAcademy8
     public class Program
     {
         static string LineSeparator = ConfigurationManager.AppSettings["LineSeparator"];
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            EncryptionData encryption = new();
+            Console.Write("Inserisci la parola da criptare: ");
+            string pwd = Console.ReadLine();
+            Console.WriteLine($"Criptazione della parola: {pwd} ---> "  + encryption.Sha256Encrypt(pwd));
+            return;
+
             SqlDbHandler sqlDbHandler = new(ConfigurationManager.AppSettings["SqlConnectionString"]);
             if (sqlDbHandler.IsDbOnline)
             {

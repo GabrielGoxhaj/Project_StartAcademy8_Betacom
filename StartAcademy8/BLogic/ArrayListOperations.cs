@@ -1,4 +1,5 @@
 ﻿using DbHandler.DataModels;
+using DbHandler.Models;
 
 namespace StartAcademy8.BLogic
 {

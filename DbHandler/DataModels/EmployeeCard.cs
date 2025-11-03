@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DbHandler.DataModels;
 
-
 namespace DbHandler.DataModels
 {
     public class EmployeeCard
